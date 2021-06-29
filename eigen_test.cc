@@ -23,7 +23,7 @@ int main() {
   M_2x1(0, 0) = 2.;
   std::cout << M_2x1[0] << std::endl;
 
-  using Eigen::last;
   using Eigen::all;
+  using Eigen::last;
   using Eigen::seq;
 }

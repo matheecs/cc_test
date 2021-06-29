@@ -1,26 +1,26 @@
-#include <Eigen/Dense>
 #include <drake/solvers/mathematical_program.h>
-#include <drake/solvers/solve.h>
 #include <drake/solvers/mosek_solver.h>
+#include <drake/solvers/solve.h>
 
-int main()
-{
-	drake::solvers::MathematicalProgram	prog;
+#include <Eigen/Dense>
 
-	Eigen::Matrix2d A;
-	A << 1, 2, 3, 4;
-	Eigen::Vector2d b;
-	b << 10, 10;
+int main() {
+  drake::solvers::MathematicalProgram prog;
 
-	std::cout << A(Eigen::all,Eigen::last) << std::endl;
+  Eigen::Matrix2d A;
+  A << 1, 2, 3, 4;
+  Eigen::Vector2d b;
+  b << 10, 10;
 
-	auto state = prog.NewContinuousVariables(2, "state");
-	prog.AddLinearConstraint((A * state).array() >= b.array());
-	prog.AddCost(state.transpose() * state);
+  std::cout << A(Eigen::all, Eigen::last) << std::endl;
 
-	drake::solvers::MathematicalProgramResult result = Solve(prog);
-	assert(result.is_success());
-	std::cout << "Result: " << std::endl << result.GetSolution() << std::endl;
+  auto state = prog.NewContinuousVariables(2, "state");
+  prog.AddLinearConstraint((A * state).array() >= b.array());
+  prog.AddCost(state.transpose() * state);
 
-	return 0;
+  drake::solvers::MathematicalProgramResult result = Solve(prog);
+  assert(result.is_success());
+  std::cout << "Result: " << std::endl << result.GetSolution() << std::endl;
+
+  return 0;
 }
