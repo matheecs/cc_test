@@ -18,9 +18,12 @@ int main() {
   prog.AddLinearConstraint((A * state).array() >= b.array());
   prog.AddCost(state.transpose() * state);
 
-  drake::solvers::MathematicalProgramResult result = Solve(prog);
+  drake::solvers::MosekSolver mp;
+
+  drake::solvers::MathematicalProgramResult result = mp.Solve(prog);
   assert(result.is_success());
   std::cout << "Result: " << std::endl << result.GetSolution() << std::endl;
+  std::cout << "Solver id: " << result.get_solver_id() << std::endl;
 
   return 0;
 }
