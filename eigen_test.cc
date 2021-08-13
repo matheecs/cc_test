@@ -50,9 +50,15 @@ class SGFliter {
 };
 
 int main() {
-  SGFliter sg(201, 3);
-  auto t1 = chrono::high_resolution_clock::now();
-  sg.getB();
-  auto t2 = chrono::high_resolution_clock::now();
-  cout << chrono::duration_cast<chrono::microseconds>(t2 - t1).count() << endl;
+  SGFliter sg(5, 1);
+  cout << sg.getB() << endl;
+
+  // auto t1 = chrono::high_resolution_clock::now();
+  // MatrixXd A = MatrixXd::Random(10000, 2000);
+  // MatrixXd B = MatrixXd::Random(10000, 2000);
+  // MatrixXd C = A * B.transpose();
+  // cout << C(0, 0) << C(999, 999) << endl;
+  // auto t2 = chrono::high_resolution_clock::now();
+  // cout << chrono::duration_cast<chrono::milliseconds>(t2 - t1).count() <<
+  // endl;
 }

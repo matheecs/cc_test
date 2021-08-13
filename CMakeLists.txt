@@ -12,9 +12,11 @@ find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED)
 find_package(Bullet REQUIRED)
 find_package(drake CONFIG REQUIRED)
+find_package(Armadillo REQUIRED)
 
-include_directories(${EIGEN3_INCLUDE_DIR} ${Boost_INCLUDE_DIRS}
-                    ${BULLET_INCLUDE_DIRS} ${drake_INCLUDE_DIRS})
+include_directories(
+  ${EIGEN3_INCLUDE_DIR} ${Boost_INCLUDE_DIRS} ${BULLET_INCLUDE_DIRS}
+  ${drake_INCLUDE_DIRS} ${ARMADILLO_INCLUDE_DIRS})
 
 include_directories(/Users/zhangjixiang/Code/eigen-3.4-rc1)
 
@@ -36,3 +38,6 @@ add_executable(drake_test drake_test.cc)
 target_link_libraries(drake_test drake::drake)
 
 add_executable(reader_test reader_test.cc)
+
+add_executable(armadillo_test armadillo_test.cc)
+target_link_libraries(armadillo_test ${ARMADILLO_LIBRARIES})
