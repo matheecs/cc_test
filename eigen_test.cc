@@ -7,6 +7,7 @@
 
 using namespace Eigen;
 using namespace std;
+using vector3_t = Eigen::Matrix<double, 3, 1>;
 
 class SGFliter {
  public:
@@ -52,6 +53,15 @@ class SGFliter {
 int main() {
   SGFliter sg(5, 1);
   cout << sg.getB() << endl;
+
+  vector3_t v(10, 11, 12);
+
+  cout << "v(0) = " << v(0) << endl;
+
+  Eigen::Matrix<double, 4, 3> A;
+  A << 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0;
+
+  cout << A << endl;
 
   // auto t1 = chrono::high_resolution_clock::now();
   // MatrixXd A = MatrixXd::Random(10000, 2000);
