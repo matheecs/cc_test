@@ -14,6 +14,7 @@ find_package(Bullet REQUIRED)
 find_package(drake CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
 find_package(Python3 COMPONENTS Interpreter Development NumPy)
+find_package(spdlog REQUIRED)
 
 include_directories(
   ${EIGEN3_INCLUDE_DIR}
@@ -51,3 +52,7 @@ target_link_libraries(armadillo_test ${ARMADILLO_LIBRARIES})
 
 add_executable(plot plot.cc)
 target_link_libraries(plot ${Python3_LIBRARIES})
+
+
+add_executable(log_test log_test.cc)
+target_link_libraries(log_test PRIVATE spdlog::spdlog)
