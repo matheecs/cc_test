@@ -146,7 +146,8 @@ void rotating_example()
 void daily_example()
 {
     // Create a daily logger - a new file is created every day on 2:30am.
-    auto daily_logger = spdlog::daily_logger_mt("daily_logger", "logs/daily.txt", 2, 30);
+    auto daily_logger = spdlog::daily_logger_mt("daily_logger", "/Users/zhangjixiang/logs/daily.txt", 2, 30);
+    daily_logger->info("basic_example");
 }
 
 #include "spdlog/cfg/env.h"

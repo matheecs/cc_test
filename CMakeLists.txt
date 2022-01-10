@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.1)
 project(cpp_demo)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O1 -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native -Wall")
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake_module)
-set(CMAKE_BUILD_TYPE "RELEASE")
+set(CMAKE_BUILD_TYPE "Release")
 
 # find_package
 find_package(nlohmann_json 3.2.0 REQUIRED)
@@ -53,3 +53,7 @@ add_executable(plot_test plot_test.cc)
 target_link_libraries(plot_test ${Python3_LIBRARIES})
 
 add_executable(log_test log_test.cc)
+
+add_executable(cpu_test cpu_test.cc)
+
+add_executable(avx_test avx_test.cc)
