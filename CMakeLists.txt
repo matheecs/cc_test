@@ -57,3 +57,6 @@ add_executable(log_test log_test.cc)
 add_executable(cpu_test cpu_test.cc)
 
 add_executable(avx_test avx_test.cc)
+
+add_executable(animation animation.cpp)
+target_link_libraries(animation ${Python3_LIBRARIES})
